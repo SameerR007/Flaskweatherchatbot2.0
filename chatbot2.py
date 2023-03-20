@@ -6,11 +6,9 @@ app= Flask(__name__)
 @app.route('/',methods=['POST','GET'])
 def index():
     today = date.today()
-    print(str(today)[8:10])
     data=request.get_json()
     source_city=data['queryResult']['parameters']['geo-city']
     datee=data['queryResult']['parameters']['date']
-    print(datee[8:10])
     geolocator = Nominatim(user_agent="MyApp")
     location = geolocator.geocode(source_city)
     lat=location.latitude
