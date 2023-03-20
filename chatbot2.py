@@ -15,7 +15,7 @@ def index():
     location = geolocator.geocode(source_city)
     lat=location.latitude
     lon=location.longitude
-    if (datee[8:10] ==str(today)[8:10]) or datee==""  :
+    if  datee=="" or (int(datee[8:10]) ==int(str(today)[8:10])):  
         url="https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid=013b716d17cad1e8064a6a092a8cf06d".format(lat,lon)
         response=requests.get(url)
         response=response.json()
