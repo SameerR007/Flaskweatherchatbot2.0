@@ -13,7 +13,7 @@ def index():
     location = geolocator.geocode(source_city)
     lat=location.latitude
     lon=location.longitude
-    if datee!="" and ((int(datee[8:10])) == (int(str(today)[8:10]) + 1)) :
+    if datee!="" and (int(datee[8:10]) != (int(str(today)[8:10]))) :
         url="https://api.openweathermap.org/data/2.5/forecast?lat={}&lon={}&appid=013b716d17cad1e8064a6a092a8cf06d".format(lat,lon)
         response=requests.get(url)
         response=response.json()
@@ -24,7 +24,7 @@ def index():
         final="Tomorrow's weather in {} is mainly {},more specifically {}. Minimum temperature will be around {}C while maximum temperature being around {}C.".format(source_city,weather,description,min_temp,max_temp)   
         ft={"fulfillmentText":final}
         return jsonify(ft)
-    else:  
+    else :
         url="https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid=013b716d17cad1e8064a6a092a8cf06d".format(lat,lon)
         response=requests.get(url)
         response=response.json()
